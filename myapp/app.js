@@ -2,6 +2,9 @@ var express = require('express');
 var path = require('path');
 var app = express();
 
+var routes = require('./routes');
+var customers = require('./routes/customers');
+
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
@@ -19,8 +22,6 @@ var connection = require('express-myconnection');
 * DataBase connection
 *
 * */
-
-
 app.use(
     connection(mysql,{
         host: 'localhost',
@@ -31,9 +32,13 @@ app.use(
     },'pool')
 );
 
-// view engine setup
+// routes
+app.get('/customers',customers.list);
+
+// views engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.set('view engine', 'ejs');
+
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
