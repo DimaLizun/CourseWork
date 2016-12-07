@@ -14,6 +14,7 @@
         <th>country</th>
         <th>salesRepEmployeeNumber</th>
         <th>creditLimit</th>
+        <th>operation</th>
     </tr>
 
     <% if(data.length){
@@ -30,6 +31,10 @@
         <th><%= data[i].country%></th>
         <th><%= data[i].salesRepEmployeeNumber%></th>
         <th><%= data[i].creditLimit%></th>
+        <th>
+            <button><a href="../customers/delete/<%=data[i].customerNumber%>">delete</a></button>
+            <button><a href="../customers/edit/<%=data[i].customerNumber %>">edit</a></button>
+        </th>
     </tr>
     <% }
 
@@ -40,55 +45,3 @@
     <% } %>
 </table>
 </div>
-<!--
-
-<div class="page-data">
-    <div class="data-table">
-        <table border="1" cellpadding="7" cellspacing="7">
-            <tr>
-
-                <th width="50px">No</th>
-                <th>customerNumber</th>
-                <th>customerName</th>
-                <th>contactLastName</th>
-                <th>contactFirstName</th>
-                <th>addressLine1</th>
-                <th>addressLine2</th>
-                <th>city</th>
-                <th>state</th>
-                <th>postalCode</th>
-                <th>country</th>
-                <th>salesRepEmployeeNumber</th>
-                <th>creditLimit</th>
-            </tr>
-
-            <% if(data.length){
-
-            for(var i = 0;i < data.length;i++) { %>
-
-            <tr>
-                <th><%= data[i].customerNumber%></th>
-                <th><%= data[i].customerName%></th>
-                <th><%= data[i].contactLastName%></th>
-                <th><%= data[i].contactFirstName%></th>
-                <th><%= data[i].addressLine1%></th>
-                <th><%= data[i].addressLine2%></th>
-                <th><%= data[i].city%></th>
-
-                <th><%= data[i].postalCode%></th>
-                <th><%= data[i].country%></th>
-                <th><%= data[i].salesRepEmployeeNumber%></th>
-                <th><%= data[i].creditLimit%></th>
-                <th width="120px">Action</th>
-            </tr>
-            <% }
-
-            }else{ %>
-            <tr>
-                <td colspan="3">No user</td>
-            </tr>
-            <% } %>
-        </table>
-    </div>
-</div>
--->

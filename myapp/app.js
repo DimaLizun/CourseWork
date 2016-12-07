@@ -34,6 +34,13 @@ app.use(
 
 // routes
 app.get('/customers',customers.list);
+app.get('/customers/add',customers.add);
+app.post('/customers/add',customers.save);
+app.get('/customers/delete/:customerNumber',customers.delete);
+app.get('/customers/edit/:customerNumber',customers.edit);
+app.post('/customers/edit/:customerNumber',customers.save_edit);
+
+
 
 // views engine setup
 app.set('views', path.join(__dirname, 'views'));
