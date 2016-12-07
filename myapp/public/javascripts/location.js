@@ -3,5 +3,5 @@
  */
 
 function addObject() {
-    window.location.href = '/customers/add'
+    window.location.href = '/customers/add';
 }
