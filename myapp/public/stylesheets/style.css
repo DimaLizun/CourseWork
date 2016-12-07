@@ -7,9 +7,9 @@ body {
 }
 
 .tab{
-    margin: 191px 123px;
-    height: 300px;
+    height: 400px;
     overflow-y: auto;
+    margin: 100px 123px;
 }
 
 table {
@@ -23,7 +23,7 @@ th {
     font-weight: normal;
     color: #039;
     border: 1px solid #6678b1;
-    padding: 5px;
+    padding: 2px;
 }
 td {
     color: #669;
