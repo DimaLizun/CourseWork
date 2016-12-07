@@ -1,0 +1,42 @@
+<% include index.ejs %>
+
+<div class="tab">
+    <table class="table">
+        <tr>
+            <th>employeeNumber</th>
+            <th>lastName</th>
+            <th>firstName</th>
+            <th> extension</th>
+            <th>email</th>
+            <th>officeCode</th>
+            <th>reportsTo</th>
+            <th>officeCode</th>
+            <th>jobTitle</th>
+        </tr>
+
+        <% if(data.length){
+        for(var i = 0; i < data.length; i++) { %>
+        <tr>
+            <th><%= data[i].employeeNumber%></th>
+            <th><%= data[i].lastName%></th>
+            <th><%= data[i].firstName%></th>
+            <th><%= data[i].extension%></th>
+            <th><%= data[i].email%></th>
+            <th><%= data[i].officeCode%></th>
+            <th><%= data[i].reportsTo%></th>
+            <th><%= data[i].officeCode%></th>
+            <th><%= data[i].jobTitle%></th>
+            <th>
+                <button><a href="../employees/delete/<%=data[i].employeeNumber%>">delete</a></button>
+                <button><a href="../employees/edit/<%=data[i].employeeNumber%>">edit</a></button>
+            </th>
+        </tr>
+        <% }
+
+        }else{ %>
+        <tr>
+            <td colspan="3">No user</td>
+        </tr>
+        <% } %>
+    </table>
+</div>

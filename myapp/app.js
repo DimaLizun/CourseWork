@@ -4,6 +4,7 @@ var app = express();
 
 var routes = require('./routes');
 var customers = require('./routes/customers');
+var employees = require('./routes/employees');
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -33,6 +34,10 @@ app.use(
 );
 
 // routes
+
+/*
+ customers
+*/
 app.get('/customers',customers.list);
 app.get('/customers/add',customers.add);
 app.post('/customers/add',customers.save);
@@ -40,6 +45,15 @@ app.get('/customers/delete/:customerNumber',customers.delete);
 app.get('/customers/edit/:customerNumber',customers.edit);
 app.post('/customers/edit/:customerNumber',customers.save_edit);
 
+/*
+   employees
+*/
+app.get('/employees',employees.list);
+app.get('/employees/add',employees.add);
+app.post('/employees/add',employees.save);
+app.get('/employees/delete/:employeeNumber',employees.delete);
+app.get('/employees/edit/:employeeNumber',employees.edit);
+app.post('/employees/edit/:employeeNumber',employees.save_edit);
 
 
 // views engine setup
