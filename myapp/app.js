@@ -38,6 +38,8 @@ app.use(
 /*
  customers
 */
+
+
 app.get('/customers',customers.list);
 app.get('/customers/add',customers.add);
 app.post('/customers/add',customers.save);
