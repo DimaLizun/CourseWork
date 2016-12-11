@@ -40,7 +40,7 @@ app.use(
 */
 
 
-app.get('/table',customers.list);
+app.get('/customers',customers.list);
 app.get('/customers/add',customers.add);
 app.post('/customers/add',customers.save);
 app.get('/customers/delete/:customerNumber',customers.delete);
