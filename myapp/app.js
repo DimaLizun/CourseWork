@@ -16,6 +16,8 @@ var users = require('./routes/users');
 var mysql  = require('mysql');
 
 var connection = require('express-myconnection');
+var multer = require('multer'); // v1.0.5
+var upload = multer(); // for parsing multipart/form-data
 
 
 /*
@@ -33,6 +35,19 @@ app.use(
     },'pool')
 );
 
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use( upload.array());
+app.use(logger('dev'));
+
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', index);
+app.use('/users', users);
+
 // routes
 
 /*
@@ -40,9 +55,10 @@ app.use(
 */
 
 
+
 app.get('/customers',customers.list);
+app.post('/customers',customers.save);
 app.get('/customers/add',customers.add);
-app.post('/customers/add',customers.save);
 app.get('/customers/delete/:customerNumber',customers.delete);
 app.get('/customers/edit/:customerNumber',customers.edit);
 app.post('/customers/edit/:customerNumber',customers.save_edit);
@@ -63,16 +79,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', index);
-app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

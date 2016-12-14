@@ -10,7 +10,7 @@ exports.list = function (req,res) {
 }
 
 exports.add = function(req, res){
-    res.render('add_customer',{page_title:"Add Customers"});
+    res.render('index',{page_title:"Add Customers"});
 };
 
 exports.edit  = function (req,res) {
@@ -26,17 +26,21 @@ exports.edit  = function (req,res) {
 }
 
 exports.save = function (req,res) {
-    console.log('work');
-    var input = JSON.parse(JSON.stringify(req.body));
+    //var input = JSON.parse(JSON.stringify(req.body));
+    var input=req.body;
+
     req.getConnection(function (err,connection) {
+
         var data = {
             customerNumber: input.customerNumber,
             customerName: input.customerName,
             contactLastName: input.contactLastName,
             contactFirstName: input.contactFirstName,
+            phone: input.phone,
             addressLine1: input.addressLine1,
             addressLine2: input.addressLine2,
             city: input.city,
+            state: input.state,
             postalCode: input.postalCode,
             country: input.country,
             salesRepEmployeeNumber: input.salesRepEmployeeNumber,
@@ -44,13 +48,17 @@ exports.save = function (req,res) {
         };
 
         var query = connection.query('INSERT INTO customers set ?',data,function (err,rows) {
+            console.log(err)
+            console.log(rows)
             if(err)
-                console.log(err);
-            res.redirect('/customers')
+                console.log(err + "lala");
+            res.redirect('/customers');
+
+
         })
 
     });
-}
+};
 
 exports.save_edit = function (req, res) {
     var input = JSON.parse(JSON.stringify(req.body));
@@ -77,7 +85,11 @@ exports.save_edit = function (req, res) {
             res.render('/customers');
         })
     })
-}
+};
+
+
+
+
 
 exports.delete = function (req,res) {
     var id = req.params.customerNumber;
@@ -88,6 +100,6 @@ exports.delete = function (req,res) {
             res.redirect('/customers');
         })
     })
-}
+};
 
 

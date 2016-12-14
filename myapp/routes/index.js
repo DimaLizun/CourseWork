@@ -7,8 +7,5 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.get('/customers',function (req,res) {
-   res.render('customers',{title: 'table'})
-})
 
 module.exports = router;

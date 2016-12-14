@@ -31,7 +31,7 @@ exports.edit  = function (req,res) {
 
 exports.save = function (req,res) {
     var input = JSON.parse(JSON.stringify(req.body));
-
+    console.log("edit error ");
     var data = {
         employeeNumber: input.employeeNumber,
         lastName: input.lastName,
@@ -48,7 +48,7 @@ exports.save = function (req,res) {
         var query = connection.query('INSERT INTO employees set ?',[data],function (err,rows) {
             if(err)
                 console.log("edit error %s", err);
-            res.redirect('/employees')
+            res.redirect('/employees');
         })
     })
 }

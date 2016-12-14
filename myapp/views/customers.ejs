@@ -9,12 +9,12 @@
     <meta name="viewport" content="width=device-width" />
 
     <title></title>
-
+    <script  type="text/javascript" src="/../javascripts/location.js"></script>
     <link href="/../stylesheets/customers.css" rel="stylesheet">
 
 
     <script src="/../template/js/jquery-1.10.2.js" type="text/javascript"></script>
-    <script  type="text/javascript" src="/../javascripts/location.js"></script>
+
     <script  type="text/javascript" src="/../javascripts/showPopup.js"></script>
 
 
@@ -173,35 +173,65 @@
             <button class="show_popup btn btn-danger"  rel="popup1">+</button>
         </div>
 
-
         <div class="overlay_popup"></div>
 
         <div class="popup" id="popup1">
-            <form id="contact" action="" method="post">
-                <h3>Colorlib Contact Form</h3>
-                <h4>Contact us for custom quote</h4>
+
+            <form method="post" id="contact" action="/customers" >
+                <h3>Add data for customer</h3>
                 <fieldset>
-                    <input placeholder="Your name" type="text" tabindex="1" required autofocus>
+                    <input placeholder="Id" type="text" tabindex="1" name="customerNumber"  required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Your Email Address" type="email" tabindex="2" required>
+                    <input placeholder="Name Firm" type="text" name="customerName" tabindex="2" required>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Your Phone Number (optional)" type="tel" tabindex="3" required>
+                    <input placeholder="Last Name" type="text" name="contactLastName" tabindex="3" required>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Your Web Site (optional)" type="url" tabindex="4" required>
+                    <input placeholder="First Name" type="text" name="contactFirstName" tabindex="4" required>
                 </fieldset>
                 <fieldset>
-                    <textarea placeholder="Type your message here...." tabindex="5" required></textarea>
+                    <input placeholder="Phone" type="text" name="phone" tabindex="5" required>
                 </fieldset>
                 <fieldset>
-                    <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+                    <input placeholder="address1" type="text" name="addressLine1" tabindex="6" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="address2" type="text" name="addressLine2" tabindex="7" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="city" type="text" name="city" tabindex="8" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="state" type="text" name="state" tabindex="9" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="postalCode" type="text" name="postalCode" tabindex="10" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="country" type="text" name="country" tabindex="11" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="sales Number" type="text" name="salesRepEmployeeNumber" tabindex="12" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="creditLimit" type="text" name="creditLimit" tabindex="13" required></input>
+                </fieldset>
+
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit">
+                        add
+                    </button>
+                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
+                        cancel
+                    </button>
+
                 </fieldset>
             </form>
         </div>
-        <div class="content">
 
+        <div class="content">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -217,10 +247,12 @@
                                         <th>Id</th>
                                         <th>Name Firm</th>
                                         <th>Last Name</th>
-                                        <th>tName</th>
+                                        <th>First Name</th>
+                                        <th>phone</th>
                                         <th>address1</th>
                                         <th>address2</th>
                                         <th>city</th>
+                                        <th>state</th>
                                         <th>postalCode</th>
                                         <th>country</th>
                                         <th>sales Number</th>
@@ -236,9 +268,11 @@
                                         <th><%= data[i].customerName%></th>
                                         <th><%= data[i].contactLastName%></th>
                                         <th><%= data[i].contactFirstName%></th>
+                                        <th><%= data[i].phone%></th>
                                         <th><%= data[i].addressLine1%></th>
                                         <th><%= data[i].addressLine2%></th>
                                         <th><%= data[i].city%></th>
+                                        <th><%= data[i].state%></th>
                                         <th><%= data[i].postalCode%></th>
                                         <th><%= data[i].country%></th>
                                         <th><%= data[i].salesRepEmployeeNumber%></th>
@@ -305,8 +339,6 @@
                 </p>
             </div>
         </footer>
-
-
     </div>
 </div>
 
