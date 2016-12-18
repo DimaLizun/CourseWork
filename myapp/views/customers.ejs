@@ -254,7 +254,7 @@
                     <input placeholder="Phone" type="text" value="<%=data[0].phone%>" name="phone">
                 </fieldset>
                 <fieldset>
-                    <input placeholder="address1" type="text" value="<%=data[0].addressLine1%>" name="phone" name="addressLine1"></input>
+                    <input placeholder="address1" type="text" value="<%=data[0].addressLine1%>"name="addressLine1"></input>
                 </fieldset>
                 <fieldset>
                     <input placeholder="address2" type="text" value="<%=data[0].addressLine2%>" name="addressLine2"></input>
@@ -337,8 +337,10 @@
                                         <th><%= data[i].salesRepEmployeeNumber%></th>
                                         <th><%= data[i].creditLimit%></th>
                                         <th>
-                                            <button type="button" href="../customers/delete/<%=data[i].customerNumber%>">
-                                                d
+                                            <button type="button">
+                                                <a href="../customers/delete/<%=data[i].customerNumber%>">
+                                                    d
+                                                </a>
                                             </button>
                                             <button type="button" class="show_popup2"  rel="popup3"  href="../customers/edit/<%=data[i].customerNumber%>">
                                                 e

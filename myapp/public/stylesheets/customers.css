@@ -157,22 +157,25 @@ fieldset {
 /*Prop*/
 
 
-.overlay_popup {
-    display:none;
-    position:fixed;
-    z-index: 999;
-    top:0;
-    right:0;
-    left:0;
-    bottom:0;
-    background:#000;
-    opacity:0.5;
-}
+.overlay_popup{
+     display:none;
+     position:fixed;
+     z-index: 999;
+     top:0;
+     right:0;
+     left:0;
+     bottom:0;
+     background:#000;
+     opacity:0.5;
+ }
 
-.popup {
+.popup,
+.popup2{
     display: none;
     position: absolute;
     z-index: 1000;
     margin:0 25% 0 25%;
     width:50%;
 }
+
+
