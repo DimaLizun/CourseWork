@@ -169,9 +169,15 @@ fieldset {
      opacity:0.5;
  }
 
-.popup,
-.popup2{
+.popup{
     display: none;
+    position: absolute;
+    z-index: 1000;
+    margin:0 25% 0 25%;
+    width:50%;
+}
+
+.popup2{
     position: absolute;
     z-index: 1000;
     margin:0 25% 0 25%;

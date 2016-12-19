@@ -1,7 +1,6 @@
 var express = require('express');
 var path = require('path');
 var app = express();
-
 var routes = require('./routes');
 var customers = require('./routes/customers');
 var employees = require('./routes/employees');
@@ -62,6 +61,9 @@ app.get('/customers/add',customers.add);
 app.get('/customers/delete/:customerNumber',customers.delete);
 app.get('/customers/edit/:customerNumber',customers.edit);
 app.post('/customers/edit/:customerNumber',customers.save_edit);
+
+
+
 
 /*
    employees

@@ -14,13 +14,13 @@ exports.add = function(req, res){
 };
 
 exports.edit  = function (req,res) {
-    var id = req.params.customerNumber ;
+    var id = req.params.customerNumber;
     req.getConnection(function (err,connection) {
-        var query  = connection.query('SELECT * FROM customers WHERE ?',[id],function (err,row) {
+        var query  = connection.query('SELECT * FROM customers WHERE customerNumber = ?',[id],function (err,rows) {
             if(err)
                 console.log("edit error%s", err);
 
-            res.render('customers',{page_title: "edit", data: row})
+            res.render('edit_customers',{page_title: "edit", data: rows})
         })
     })
 }
@@ -61,8 +61,9 @@ exports.save = function (req,res) {
 };
 
 exports.save_edit = function (req, res) {
-    var input = JSON.parse(JSON.stringify(req.body));
-    var id = req.params.customerNumber ;
+   // var input = JSON.parse(JSON.stringify(req.body));
+    var id = req.params.customerNumber;
+    var input=req.body;
 
     var data = {
         customerNumber: input.customerNumber,
