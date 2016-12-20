@@ -17,9 +17,9 @@ exports.add = function(req, res){
 };
 
 exports.edit  = function (req,res) {
-    var id = req.params.employeeNumber;
+    var id = req.params.customerNumber;
     req.getConnection(function (err,connection) {
-        var query  = connection.query('SELECT * FROM employees WHERE ?',[id],function (err,row) {
+        var query  = connection.query('SELECT * FROM employees WHERE id = ?',[id],function (err,row) {
             if(err)
                 console.log("edit error %s", err);
 
@@ -30,8 +30,8 @@ exports.edit  = function (req,res) {
 
 
 exports.save = function (req,res) {
-    var input = JSON.parse(JSON.stringify(req.body));
-    console.log("edit error ");
+    var input=req.body;
+
     var data = {
         employeeNumber: input.employeeNumber,
         lastName: input.lastName,
@@ -40,7 +40,6 @@ exports.save = function (req,res) {
         email: input.email,
         officeCode: input.officeCode,
         reportsTo: input.reportsTo,
-        postalCode: input.postalCode,
         jobTitle: input.jobTitle
     };
 
@@ -54,7 +53,7 @@ exports.save = function (req,res) {
 }
 
 exports.save_edit = function (req, res) {
-    var input = JSON.parse(JSON.stringify(req.body));
+    var input=req.body;
     var id = req.params.employeeNumber;
 
     var data = {
@@ -65,7 +64,6 @@ exports.save_edit = function (req, res) {
         email: input.email,
         officeCode: input.officeCode,
         reportsTo: input.reportsTo,
-        postalCode: input.postalCode,
         jobTitle: input.jobTitle
     };
 
@@ -73,13 +71,15 @@ exports.save_edit = function (req, res) {
         connection.query('UPDATE employees set ? WHERE employeeNumber = ?',[data,id],function (err,rows) {
             if (err)
                 console.log("Error Updating : %s ",err );
-            res.render('/employees');
+            res.redirect('/employees');
         })
     })
 }
 
 exports.delete = function (req,res) {
+
     var id = req.params.employeeNumber;
+
     req.getConnection(function (err,connection) {
         connection.query('DELETE FROM employees WHERE employeeNumber = ? ',[id],function (err,rows) {
             if(err)

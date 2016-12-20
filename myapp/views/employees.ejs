@@ -1,42 +1,342 @@
-<% include index.ejs %>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
 
-<div class="tab">
-    <table class="table">
-        <tr>
-            <th>employeeNumber</th>
-            <th>lastName</th>
-            <th>firstName</th>
-            <th> extension</th>
-            <th>email</th>
-            <th>officeCode</th>
-            <th>reportsTo</th>
-            <th>officeCode</th>
-            <th>jobTitle</th>
-        </tr>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
 
-        <% if(data.length){
-        for(var i = 0; i < data.length; i++) { %>
-        <tr>
-            <th><%= data[i].employeeNumber%></th>
-            <th><%= data[i].lastName%></th>
-            <th><%= data[i].firstName%></th>
-            <th><%= data[i].extension%></th>
-            <th><%= data[i].email%></th>
-            <th><%= data[i].officeCode%></th>
-            <th><%= data[i].reportsTo%></th>
-            <th><%= data[i].officeCode%></th>
-            <th><%= data[i].jobTitle%></th>
-            <th>
-                <button><a href="../employees/delete/<%=data[i].employeeNumber%>">delete</a></button>
-                <button><a href="../employees/edit/<%=data[i].employeeNumber%>">edit</a></button>
-            </th>
-        </tr>
-        <% }
+    <title></title>
+    <script  type="text/javascript" src="/../javascripts/location.js"></script>
+    <link href="/../stylesheets/mainStyle.css" rel="stylesheet">
 
-        }else{ %>
-        <tr>
-            <td colspan="3">No user</td>
-        </tr>
-        <% } %>
-    </table>
+
+    <script src="/../template/js/jquery-1.10.2.js" type="text/javascript"></script>
+
+    <script  type="text/javascript" src="/../javascripts/showPopup.js"></script>
+
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="/../template/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="/../template/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="/../template/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="/../template/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="/../template/css/pe-icon-7-stroke.css" rel="stylesheet" />
+</head>
+<body>
+
+
+
+<div class="wrapper">
+
+
+    <div class="sidebar" data-color="purple" data-image="/../images/sidebar-2.jpg" >
+
+        <!--   you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple" -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="#" class="simple-text">
+                    Admin Page
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="/home">
+                        <i class="pe-7s-graph"></i>
+                        <p>Home</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/customers">
+                        <i class="pe-7s-graph"></i>
+                        <p>Customers</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/employees">
+                        <i class="pe-7s-graph"></i>
+                        <p>Employees</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Products</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Product details</p>
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Table List</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-globe"></i>
+                                <b class="caret"></b>
+                                <span class="notification">5</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Notification 1</a></li>
+                                <li><a href="#">Notification 2</a></li>
+                                <li><a href="#">Notification 3</a></li>
+                                <li><a href="#">Notification 4</a></li>
+                                <li><a href="#">Another notification</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="">
+                                Account
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Dropdown
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Add Button -->
+        <div class="bred">
+            <button class="show_popup btn btn-danger"  rel="popup1">
+                +
+            </button>
+        </div>
+
+        <div class="overlay_popup"></div>
+        <!-- Add Form -->
+        <div class="popup" id="popup1">
+            <form method="post" id="contact" action="/employees" >
+                <h3>Add data for employee</h3>
+                <fieldset>
+                    <input placeholder="Id" type="text" tabindex="1" name="employeeNumber"  required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Last Name" type="text" name="lastName" tabindex="2" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="First Name" type="text" name="firstName" tabindex="3" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Extension" type="text" name="extension" tabindex="4" required>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Email" type="text" name="email" tabindex="5" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="OfficeCode" type="text" name="officeCode" tabindex="6" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="ReportsTo" type="text" name="reportsTo" tabindex="7"></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="JobTitle" type="text" name="jobTitle" tabindex="8" required></input>
+                </fieldset>
+
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit">
+                        add
+                    </button>
+                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
+                        cancel
+                    </button>
+                </fieldset>
+
+            </form>
+        </div>
+        <!-- View in loop data -->
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"></h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class ="scrol">
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>lastName</th>
+                                            <th>firstName</th>
+                                            <th>extension</th>
+                                            <th>email</th>
+                                            <th>officeCode</th>
+                                            <th>reportsTo</th>
+                                            <th>jobTitle</th>
+                                            <th>operation</th>
+                                        </tr>
+
+                                        <tbody>
+                                        <% if(data.length){
+                                        for(var i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th><%= data[i].employeeNumber%></th>
+                                            <th><%= data[i].lastName%></th>
+                                            <th><%= data[i].firstName%></th>
+                                            <th><%= data[i].extension%></th>
+                                            <th><%= data[i].email%></th>
+                                            <th><%= data[i].officeCode%></th>
+                                            <th><%= data[i].reportsTo%></th>
+                                            <th><%= data[i].jobTitle%></th>
+                                            <th>
+                                                <button><a href="../employees/delete/<%=data[i].employeeNumber%>">delete</a></button>
+                                                <button><a href="../employees/edit/<%=data[i].employeeNumber%>">edit</a></button>
+                                            </th>
+                                        </tr>
+                                        <% }
+
+                                        }else{ %>
+                                        <tr>
+                                            <td colspan="3">No user</td>
+                                        </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Portfolio
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2016
+                </p>
+            </div>
+        </footer>
+    </div>
 </div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="/../template/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="/../template/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="/../template/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin
+<script src="/../template/js/chartist.min.js"></script>
+-->
+<!--  Notifications Plugin    -->
+<script src="/../template/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="/../template/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<script src="/../template/js/demo.js"></script>
+
+</html>
+

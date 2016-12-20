@@ -48,15 +48,11 @@ exports.save = function (req,res) {
         };
 
         var query = connection.query('INSERT INTO customers set ?',data,function (err,rows) {
-            console.log(err)
-            console.log(rows)
+
             if(err)
                 console.log(err + "lala");
             res.redirect('/customers');
-
-
         })
-
     });
 };
 

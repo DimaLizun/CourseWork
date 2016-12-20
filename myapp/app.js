@@ -56,6 +56,9 @@ app.use('/users', users);
 */
 
 app.get('/home',home.index);
+
+
+
 app.get('/customers',customers.list);
 app.post('/customers',customers.save);
 app.get('/customers/add',customers.add);
@@ -64,14 +67,12 @@ app.get('/customers/edit/:customerNumber',customers.edit);
 app.post('/customers/edit/:customerNumber',customers.save_edit);
 
 
-
-
 /*
    employees
 */
 app.get('/employees',employees.list);
+app.post('/employees',employees.save);
 app.get('/employees/add',employees.add);
-app.post('/employees/add',employees.save);
 app.get('/employees/delete/:employeeNumber',employees.delete);
 app.get('/employees/edit/:employeeNumber',employees.edit);
 app.post('/employees/edit/:employeeNumber',employees.save_edit);
