@@ -4,6 +4,8 @@ var app = express();
 var routes = require('./routes');
 var customers = require('./routes/customers');
 var employees = require('./routes/employees');
+var home = require('./routes/home');
+
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -53,8 +55,7 @@ app.use('/users', users);
  customers
 */
 
-
-
+app.get('/home',home.index);
 app.get('/customers',customers.list);
 app.post('/customers',customers.save);
 app.get('/customers/add',customers.add);

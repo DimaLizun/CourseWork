@@ -83,7 +83,7 @@ exports.save_edit = function (req, res) {
          connection.query('UPDATE customers set ? WHERE customerNumber  = ?',[data,id],function (err,rows) {
             if (err)
                 console.log("Error Updating : %s ",err );
-            res.render('/customers');
+             res.redirect('/customers');
         })
     })
 };
