@@ -57,9 +57,9 @@ app.use('/users', users);
 
 app.get('/home',home.index);
 
-
-
+//app.get('/customers',customers.select_id);
 app.get('/customers',customers.list);
+
 app.post('/customers',customers.save);
 app.get('/customers/add',customers.add);
 app.get('/customers/delete/:customerNumber',customers.delete);

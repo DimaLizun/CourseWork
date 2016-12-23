@@ -1,13 +1,43 @@
 
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM customers', function (err, rows) {
+        var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
+
+
             if (err)
                 console.log("ERROR" + err);
-            res.render('customers',{page_title:"Customers - Node.js", data:rows});
+            var query = connection.query('SELECT * FROM customers', function (err, cust) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"Customers - Node.js", data:cust,emps:emps};
+
+                res.render('customers',data);
+            });
         });
     });
-}
+};
+
+/*
+exports.select_id = function (req,res) {
+
+    req.getConnection(function (err,connection) {
+        var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
+
+
+            if (err)
+                console.log("ERROR" + err);
+            var query = connection.query('SELECT * FROM customers', function (err, cust) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"Customers - Node.js", data:cust,emps:emps};
+
+                res.render('customers',data);
+            });
+        });
+    });
+};
+*/
+
 
 exports.add = function(req, res){
     res.render('index',{page_title:"Add Customers"});
@@ -98,5 +128,7 @@ exports.delete = function (req,res) {
         })
     })
 };
+
+
 
 

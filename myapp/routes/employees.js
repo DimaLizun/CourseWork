@@ -10,7 +10,7 @@ exports.list = function (req,res) {
             res.render('employees',{page_title:"employees - Node.js", data:rows});
         });
     });
-}
+};
 
 exports.add = function(req, res){
     res.render('add_employees',{page_title:"Add employees"});
@@ -26,7 +26,7 @@ exports.edit  = function (req,res) {
             res.render('edit_employees',{page_title: "edit", data: row})
         })
     })
-}
+};
 
 
 exports.save = function (req,res) {
@@ -50,7 +50,7 @@ exports.save = function (req,res) {
             res.redirect('/employees');
         })
     })
-}
+};
 
 exports.save_edit = function (req, res) {
 
@@ -74,7 +74,10 @@ exports.save_edit = function (req, res) {
             res.redirect('/employees');
         })
     })
-}
+};
+
+
+
 
 exports.delete = function (req,res) {
 
@@ -87,6 +90,8 @@ exports.delete = function (req,res) {
             res.redirect('/employees');
         })
     })
-}
+};
+
+
 
 

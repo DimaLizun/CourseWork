@@ -216,8 +216,20 @@
                     <input placeholder="country" type="text" name="country" tabindex="11" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="sales Number" type="text" name="salesRepEmployeeNumber" tabindex="12" required></input>
+                   <select name="salesRepEmployeeNumber" required>
+
+                       <%
+                       for(var i = 0; i < emps.length; i++) { %>
+                       <option><%= emps[i].employeeNumber%></option>
+                       <% } %>
+
+                   </select>
                 </fieldset>
+                <!--
+                <fieldset>
+                    <input placeholder="Employees Num" type="text" name="salesRepEmployeeNumber" tabindex="12" required></input>
+                </fieldset>
+                -->
                 <fieldset>
                     <input placeholder="creditLimit" type="text" name="creditLimit" tabindex="13" required></input>
                 </fieldset>
@@ -265,6 +277,7 @@
                                     </thead>
 
                                     <tbody>
+
                                     <% if(data.length){
                                     for(var i = 0; i < data.length; i++) { %>
                                     <tr>
@@ -284,11 +297,11 @@
                                         <th>
                                             <button type="button">
                                                 <a href="../customers/delete/<%=data[i].customerNumber%>">
-                                                    d
+                                                    delete
                                                 </a>
                                             </button>
                                             <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
-                                                <a href="../customers/edit/<%=data[i].customerNumber%>">e</a>
+                                                <a href="../customers/edit/<%=data[i].customerNumber%>">edit</a>
                                             </button>
                                         </th>
                                     </tr>
