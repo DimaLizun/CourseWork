@@ -12,6 +12,8 @@ exports.list = function (req,res) {
     });
 };
 
+
+
 exports.add = function(req, res){
     res.render('add_employees',{page_title:"Add employees"});
 };

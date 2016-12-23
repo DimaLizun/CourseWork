@@ -2,8 +2,6 @@
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
-
-
             if (err)
                 console.log("ERROR" + err);
             var query = connection.query('SELECT * FROM customers', function (err, cust) {
@@ -17,26 +15,7 @@ exports.list = function (req,res) {
     });
 };
 
-/*
-exports.select_id = function (req,res) {
 
-    req.getConnection(function (err,connection) {
-        var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
-
-
-            if (err)
-                console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM customers', function (err, cust) {
-                if (err)
-                    console.log("ERROR" + err);
-                var data={page_title:"Customers - Node.js", data:cust,emps:emps};
-
-                res.render('customers',data);
-            });
-        });
-    });
-};
-*/
 
 
 exports.add = function(req, res){

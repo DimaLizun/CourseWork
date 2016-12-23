@@ -4,87 +4,88 @@
 
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM employees', function (err, rows) {
+        var query = connection.query('SELECT * FROM offices', function (err, rows) {
             if (err)
                 console.log("ERROR" + err);
-            res.render('employees',{page_title:"employees - Node.js", data:rows});
+            res.render('offices',{page_title:"offices", data:rows});
         });
     });
 }
 
 exports.add = function(req, res){
-    res.render('add_employees',{page_title:"Add employees"});
+    res.render('offices',{page_title:"Add offices"});
 };
 
 exports.edit  = function (req,res) {
-    var id = req.params.employeeNumber;
+    var id = req.params.officeCode;
     req.getConnection(function (err,connection) {
-        var query  = connection.query('SELECT * FROM employees WHERE ?',[id],function (err,row) {
+        var query  = connection.query('SELECT * FROM offices WHERE ?',[id],function (err,row) {
             if(err)
                 console.log("edit error %s", err);
 
-            res.render('employees',{page_title: "edit", data: row})
+            res.render('offices',{page_title: "edit", data: row})
         })
     })
 }
 
 
 exports.save = function (req,res) {
-    var input = JSON.parse(JSON.stringify(req.body));
+
+    var input=req.body;
 
     var data = {
-        employeeNumber: input.employeeNumber,
-        lastName: input.lastName,
-        firstName: input.firstName,
-        extension: input.extension,
-        email: input.email,
         officeCode: input.officeCode,
-        reportsTo: input.reportsTo,
+        city: input.city,
+        phone: input.phone,
+        addressLine1: input.addressLine1,
+        addressLine2: input.addressLine2,
+        state: input.state,
+        country: input.country,
         postalCode: input.postalCode,
-        jobTitle: input.jobTitle
+        territory: input.territory
     };
 
     req.getConnection(function (err,connection) {
-        var query = connection.query('INSERT INTO employees set ?',[data],function (err,rows) {
+        var query = connection.query('INSERT INTO offices set ?',[data],function (err,rows) {
             if(err)
                 console.log("edit error %s", err);
-            res.redirect('/employees')
+            res.redirect('/offices')
         })
     })
 }
 
 exports.save_edit = function (req, res) {
-    var input = JSON.parse(JSON.stringify(req.body));
-    var id = req.params.employeeNumber;
+    var input=req.body;
+    var id = req.params.officeCode;
 
     var data = {
-        employeeNumber: input.employeeNumber,
-        lastName: input.lastName,
-        firstName: input.firstName,
-        extension: input.extension,
-        email: input.email,
         officeCode: input.officeCode,
-        reportsTo: input.reportsTo,
+        city: input.city,
+        phone: input.phone,
+        addressLine1: input.addressLine1,
+        addressLine2: input.addressLine2,
+        state: input.state,
+        country: input.country,
         postalCode: input.postalCode,
-        jobTitle: input.jobTitle
+        territory: input.territory
     };
 
     req.getConnection(function (err,connection) {
-        connection.query('UPDATE employees set ? WHERE employeeNumber = ?',[data,id],function (err,rows) {
+        connection.query('UPDATE offices set ? WHERE officeCode = ?',[data,id],function (err,rows) {
             if (err)
                 console.log("Error Updating : %s ",err );
-            res.render('/employees');
+            res.render('/offices');
         })
     })
 }
 
 exports.delete = function (req,res) {
-    var id = req.params.employeeNumber;
+    var id = req.params.officeCode;
     req.getConnection(function (err,connection) {
-        connection.query('DELETE FROM employees WHERE employeeNumber = ? ',[id],function (err,rows) {
+        connection.query('DELETE FROM offices WHERE officeCode = ? ',[id],function (err,rows) {
             if(err)
                 console.log("delete error %s", err);
-            res.redirect('/employees');
+            res.redirect('/offices');
         })
     })
 }

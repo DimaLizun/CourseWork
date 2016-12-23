@@ -4,6 +4,7 @@ var app = express();
 var routes = require('./routes');
 var customers = require('./routes/customers');
 var employees = require('./routes/employees');
+var offices = require('./routes/offices');
 var home = require('./routes/home');
 
 
@@ -59,7 +60,6 @@ app.get('/home',home.index);
 
 //app.get('/customers',customers.select_id);
 app.get('/customers',customers.list);
-
 app.post('/customers',customers.save);
 app.get('/customers/add',customers.add);
 app.get('/customers/delete/:customerNumber',customers.delete);
@@ -76,6 +76,20 @@ app.get('/employees/add',employees.add);
 app.get('/employees/delete/:employeeNumber',employees.delete);
 app.get('/employees/edit/:employeeNumber',employees.edit);
 app.post('/employees/edit/:employeeNumber',employees.save_edit);
+
+
+/*
+*
+* offices
+*
+* */
+
+app.get('/offices',offices.list);
+app.post('/offices',offices.save);
+app.get('/offices/add',offices.add);
+app.get('/offices/delete/:officeCode',offices.delete);
+app.get('/offices/edit/:officeCode',offices.edit);
+app.post('/offices/edit/:officeCode',offices.save_edit);
 
 
 // views engine setup

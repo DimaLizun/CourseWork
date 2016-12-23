@@ -58,7 +58,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/home">
                         <i class="pe-7s-graph"></i>
                         <p>Home</p>
                     </a>
@@ -79,9 +79,9 @@
                 </li>
 
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/offices">
                         <i class="pe-7s-graph"></i>
-                        <p>Products</p>
+                        <p>Offices</p>
                     </a>
                 </li>
 
@@ -96,8 +96,6 @@
 
         </div>
     </div>
-
-
 
 
     <div class="main-panel">
@@ -171,63 +169,150 @@
             </div>
         </nav>
 
-        <!-- Edit Form -->
-        <div class="popup2" id="popup3">
+        <!-- Add Button -->
+        <div class="bred">
+            <button class="show_popup btn btn-danger"  rel="popup1">
+                +
+            </button>
+        </div>
 
-            <form method="post" action="/customers/edit/<%=data[0].customerNumber%>"  id="contact" >
-                <h3>Edit data for customer</h3>
+        <div class="overlay_popup"></div>
+        <!-- Add Form -->
+        <div class="popup" id="popup1">
 
+            <form method="post" id="contact" action="/offices" >
+                <h3>Add data for offices</h3>
                 <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" value="<%=data[0].customerNumber%>" name="customerNumber" autofocus>
-                </fieldset>
-
-                <fieldset>
-                    <input placeholder="Name Firm" type="text" value="<%=data[0].customerName%>" name="customerName">
+                    <input placeholder="Id" type="text" tabindex="1" name="officeCode"  required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Last Name" type="text" value="<%=data[0].contactLastName%>" name="contactLastName">
+                    <input placeholder="Phone" type="text" name="phone" tabindex="2" required>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="First Name" type="text" value="<%=data[0].contactFirstName%>" name="contactFirstName">
+                    <input placeholder="address1" type="text" name="addressLine1" tabindex="3" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Phone" type="text" value="<%=data[0].phone%>" name="phone">
+                    <input placeholder="address2" type="text" name="addressLine2" tabindex="4" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="address1" type="text" value="<%=data[0].addressLine1%>"name="addressLine1"></input>
+                    <input placeholder="city" type="text" name="city" tabindex="5" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="address2" type="text" value="<%=data[0].addressLine2%>" name="addressLine2"></input>
+                    <input placeholder="state" type="text" name="state" tabindex="6" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="city" type="text" value="<%=data[0].city%>" name="city"></input>
+                    <input placeholder="postalCode" type="text" name="postalCode" tabindex="7" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="state" type="text" value="<%=data[0].state%>" name="state"></input>
+                    <input placeholder="country" type="text" name="country" tabindex="8" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="postalCode" type="text" value="<%=data[0].postalCode%>" name="postalCode"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="country" type="text" value="<%=data[0].country%>" name="country"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="sales Number" type="text" value="<%=data[0].salesRepEmployeeNumber%>" name="salesRepEmployeeNumber"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="creditLimit" type="text" value="<%=data[0].creditLimit%>" name="creditLimit"></input>
+                    <input placeholder="territory" type="text" name="territory" tabindex="9" required></input>
                 </fieldset>
 
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit">
-                        Edit
+                        add
                     </button>
-                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
-                        Cancel
+                    <button type="submit" id="contact-submit" onClick="cancelAddOffices()">
+                        cancel
                     </button>
+
                 </fieldset>
             </form>
         </div>
+        <!-- View in loop data -->
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"></h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class ="scrol">
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <th>officeCode</th>
+                                        <th>city</th>
+                                        <th>phone</th>
+                                        <th>addressLine1</th>
+                                        <th>addressLine2</th>
+                                        <th>state</th>
+                                        <th>country</th>
+                                        <th>postalCode</th>
+                                        <th>territory</th>
+                                        <th>operation</th>
+                                        </thead>
+
+                                        <tbody>
+
+                                        <% if(data.length){
+                                        for(var i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th><%= data[i].officeCode%></th>
+                                            <th><%= data[i].city%></th>
+                                            <th><%= data[i].phone%></th>
+                                            <th><%= data[i].addressLine1%></th>
+                                            <th><%= data[i].addressLine2%></th>
+                                            <th><%= data[i].city%></th>
+                                            <th><%= data[i].postalCode%></th>
+                                            <th><%= data[i].country%></th>
+                                            <th><%= data[i].territory%></th>
+                                            <th>
+                                                <button type="button">
+                                                    <a href="../offices/delete/<%=data[i].officeCode%>">
+                                                        delete
+                                                    </a>
+                                                </button>
+                                                <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
+                                                    <a href="../offices/edit/<%=data[i].officeCode%>">edit</a>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                        <% }
+
+                                        }else{ %>
+                                        <tr>
+                                            <td colspan="3">No user</td>
+                                        </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2016
+                </p>
+            </div>
+        </footer>
     </div>
 </div>
 

@@ -10,3 +10,13 @@ function cancelAdd(){
 
     window.location.href = '/customers';
 }
+
+function cancelAddEmployees(){
+
+    window.location.href = '/employees';
+}
+
+function cancelAddOffices(){
+
+    window.location.href = '/offices';
+}
