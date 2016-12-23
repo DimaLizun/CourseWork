@@ -19,11 +19,11 @@ exports.add = function(req, res){
 exports.edit  = function (req,res) {
     var id = req.params.officeCode;
     req.getConnection(function (err,connection) {
-        var query  = connection.query('SELECT * FROM offices WHERE ?',[id],function (err,row) {
+        var query  = connection.query('SELECT * FROM offices WHERE officeCode = ?',[id],function (err,row) {
             if(err)
                 console.log("edit error %s", err);
 
-            res.render('offices',{page_title: "edit", data: row})
+            res.render('edit_offices',{page_title: "edit", data: row})
         })
     })
 }
@@ -74,7 +74,7 @@ exports.save_edit = function (req, res) {
         connection.query('UPDATE offices set ? WHERE officeCode = ?',[data,id],function (err,rows) {
             if (err)
                 console.log("Error Updating : %s ",err );
-            res.render('/offices');
+            res.redirect('/offices');
         })
     })
 }

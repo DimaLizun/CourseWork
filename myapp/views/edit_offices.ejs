@@ -172,61 +172,50 @@
         </nav>
 
         <!-- Edit Form -->
-        <div class="popup2" id="popup3">
 
-            <form method="post" action="/customers/edit/<%=data[0].customerNumber%>"  id="contact" >
-                <h3>Edit data for customer</h3>
+            <div class="popup2" id="popup3">
 
-                <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" value="<%=data[0].customerNumber%>" name="customerNumber" autofocus>
-                </fieldset>
+                <form method="post" id="contact" action="/offices/edit/<%=data[0].officeCode%>" >
+                    <h3>Edit data for offices</h3>
+                    <fieldset>
+                        <input placeholder="Id" type="text" tabindex="1" name="officeCode" value="<%=data[0].officeCode%>"   required autofocus>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="Phone" type="text" name="phone" value="<%=data[0].phone%>" tabindex="2" required>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="address1" type="text" name="addressLine1" value="<%=data[0].addressLine1%>" tabindex="3" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="address2" type="text" name="addressLine2" value="<%=data[0].addressLine2%>" tabindex="4" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="city" type="text" name="city" tabindex="5" value="<%=data[0].city%>" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="state" type="text" name="state" tabindex="6" value="<%=data[0].state%>" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="postalCode" type="text" name="postalCode" value="<%=data[0].postalCode%>" tabindex="7" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="country" type="text" name="country" value="<%=data[0].country%>" tabindex="8" required></input>
+                    </fieldset>
+                    <fieldset>
+                        <input placeholder="territory" type="text" name="territory" value="<%=data[0].territory%>" tabindex="9" required></input>
+                    </fieldset>
 
-                <fieldset>
-                    <input placeholder="Name Firm" type="text" value="<%=data[0].customerName%>" name="customerName">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="Last Name" type="text" value="<%=data[0].contactLastName%>" name="contactLastName">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="First Name" type="text" value="<%=data[0].contactFirstName%>" name="contactFirstName">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="Phone" type="text" value="<%=data[0].phone%>" name="phone">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="address1" type="text" value="<%=data[0].addressLine1%>"name="addressLine1"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="address2" type="text" value="<%=data[0].addressLine2%>" name="addressLine2"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="city" type="text" value="<%=data[0].city%>" name="city"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="state" type="text" value="<%=data[0].state%>" name="state"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="postalCode" type="text" value="<%=data[0].postalCode%>" name="postalCode"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="country" type="text" value="<%=data[0].country%>" name="country"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="sales Number" type="text" value="<%=data[0].salesRepEmployeeNumber%>" name="salesRepEmployeeNumber"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="creditLimit" type="text" value="<%=data[0].creditLimit%>" name="creditLimit"></input>
-                </fieldset>
+                    <fieldset>
+                        <button name="submit" type="submit" id="contact-submit">
+                            add
+                        </button>
+                        <button type="submit" id="contact-submit" onClick="cancelAddOffices()">
+                            cancel
+                        </button>
 
-                <fieldset>
-                    <button name="submit" type="submit" id="contact-submit">
-                        Edit
-                    </button>
-                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
-                        Cancel
-                    </button>
-                </fieldset>
-            </form>
+                    </fieldset>
+                </form>
+            </div>
         </div>
     </div>
 </div>
