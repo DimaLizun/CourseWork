@@ -121,13 +121,10 @@
                     </a>
                 </li>
 
-
             </ul>
 
         </div>
     </div>
-
-
 
 
     <div class="main-panel">
@@ -201,52 +198,118 @@
             </div>
         </nav>
 
-        <!-- Edit Form -->
+        <!-- Add Button -->
+        <div class="bred">
+            <button class="show_popup btn btn-danger"  rel="popup1">
+                +
+            </button>
+        </div>
 
-            <div class="popup2" id="popup3">
+        <div class="overlay_popup"></div>
+        <!-- Add Form -->
+        <div class="popup" id="popup1">
 
-                <form method="post" id="contact" action="/offices/edit/<%=data[0].officeCode%>" >
-                    <h3>Edit data for offices</h3>
-                    <fieldset>
-                        <input placeholder="Id" type="text" tabindex="1" name="officeCode" value="<%=data[0].officeCode%>"   required autofocus>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="Phone" type="text" name="phone" value="<%=data[0].phone%>" tabindex="2" required>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="address1" type="text" name="addressLine1" value="<%=data[0].addressLine1%>" tabindex="3" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="address2" type="text" name="addressLine2" value="<%=data[0].addressLine2%>" tabindex="4" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="city" type="text" name="city" tabindex="5" value="<%=data[0].city%>" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="state" type="text" name="state" tabindex="6" value="<%=data[0].state%>" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="postalCode" type="text" name="postalCode" value="<%=data[0].postalCode%>" tabindex="7" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="country" type="text" name="country" value="<%=data[0].country%>" tabindex="8" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="territory" type="text" name="territory" value="<%=data[0].territory%>" tabindex="9" required></input>
-                    </fieldset>
 
-                    <fieldset>
-                        <button name="submit" type="submit" id="contact-submit">
-                            add
-                        </button>
-                        <button type="submit" id="contact-submit" onClick="cancelAddOffices()">
-                            cancel
-                        </button>
 
-                    </fieldset>
-                </form>
+
+            <form method="post" id="contact" action="/productlines" >
+                <h3>Add data for offices</h3>
+                <fieldset>
+                    <input placeholder="Id" type="text" tabindex="1" name="productLine"  required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="Description" type="text" tabindex="1" name="textDescription"  required >
+                </fieldset>
+
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit">
+                        add
+                    </button>
+                    <button type="submit" id="contact-submit" onClick="cancelAddProductLine()">
+                        cancel
+                    </button>
+
+                </fieldset>
+            </form>
+        </div>
+        <!-- View in loop data -->
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title"></h4>
+                                <p class="category"></p>
+                            </div>
+                            <div class ="scrol">
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
+                                        <th>productLine</th>
+                                        <th>textDescription</th>
+                                        <th>operating</th>
+                                        </thead>
+
+                                        <tbody>
+
+                                        <% if(data.length){
+                                        for(var i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th><%= data[i].productLine%></th>
+                                            <th><%= data[i].textDescription%></th>
+                                            <th>
+                                                <button type="button">
+                                                    <a href="../productlines/delete/<%=data[i].productLine%>">
+                                                        delete
+                                                    </a>
+                                                </button>
+                                                <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
+                                                    <a href="../productlines/edit/<%=data[i].productLine%>">edit</a>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                        <% }
+
+                                        }else{ %>
+                                        <tr>
+                                            <td colspan="3">No user</td>
+                                        </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="#">
+                                Home
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                Company
+                            </a>
+                        </li>
+
+                    </ul>
+                </nav>
+                <p class="copyright pull-right">
+                    &copy; 2016
+                </p>
+            </div>
+        </footer>
     </div>
 </div>
 

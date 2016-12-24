@@ -37,3 +37,7 @@ function cancelAddOrderDetails() {
 function cancelAddProducts() {
     window.location.href = '/products';
 }
+
+function cancelAddProductLine() {
+    window.location.href = '/productlines';
+}

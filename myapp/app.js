@@ -11,7 +11,7 @@ var payments = require('./routes/payments');
 var orders = require('./routes/orders')
 var orderdetails = require('./routes/orderdetails');
 var products = require('./routes/products');
-
+var productlines = require('./routes/productlines');
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -149,6 +149,21 @@ app.get('/products/add',products.add);
 app.get('/products/delete/:productCode',products.delete);
 app.get('/products/edit/:productCode',products.edit);
 app.post('/products/edit/:productCode',products.save_edit);
+
+
+/*
+ *
+ *productlines
+ *
+ * */
+
+app.get('/productlines',productlines.list);
+app.post('/productlines',productlines.save);
+app.get('/productlines/add',productlines.add);
+app.get('/productlines/delete/:productLine',productlines.delete);
+app.get('/productlines/edit/:productLine',productlines.edit);
+app.post('/productlines/edit/:productLine',productlines.save_edit);
+
 
 // views engine setup
 app.set('views', path.join(__dirname, 'views'));

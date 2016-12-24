@@ -203,51 +203,31 @@
 
         <!-- Edit Form -->
 
-            <div class="popup2" id="popup3">
 
-                <form method="post" id="contact" action="/offices/edit/<%=data[0].officeCode%>" >
-                    <h3>Edit data for offices</h3>
-                    <fieldset>
-                        <input placeholder="Id" type="text" tabindex="1" name="officeCode" value="<%=data[0].officeCode%>"   required autofocus>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="Phone" type="text" name="phone" value="<%=data[0].phone%>" tabindex="2" required>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="address1" type="text" name="addressLine1" value="<%=data[0].addressLine1%>" tabindex="3" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="address2" type="text" name="addressLine2" value="<%=data[0].addressLine2%>" tabindex="4" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="city" type="text" name="city" tabindex="5" value="<%=data[0].city%>" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="state" type="text" name="state" tabindex="6" value="<%=data[0].state%>" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="postalCode" type="text" name="postalCode" value="<%=data[0].postalCode%>" tabindex="7" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="country" type="text" name="country" value="<%=data[0].country%>" tabindex="8" required></input>
-                    </fieldset>
-                    <fieldset>
-                        <input placeholder="territory" type="text" name="territory" value="<%=data[0].territory%>" tabindex="9" required></input>
-                    </fieldset>
+        <div class="popup2" id="popup3">
+            <form method="post" id="contact" action="/productlines/edit/<%=data[0].productLine%>" >
+                <h3>Edit data for offices</h3>
+                <fieldset>
+                    <input type="text" tabindex="1" name="productLine" value="<%=data[0].productLine%>"   required autofocus>
+                </fieldset>
+                <fieldset>
+                    <input type="text" tabindex="1" name="textDescription" value="<%=data[0].textDescription%>"   required autofocus>
+                </fieldset>
 
-                    <fieldset>
-                        <button name="submit" type="submit" id="contact-submit">
-                            add
-                        </button>
-                        <button type="submit" id="contact-submit" onClick="cancelAddOffices()">
-                            cancel
-                        </button>
 
-                    </fieldset>
-                </form>
-            </div>
+                <fieldset>
+                    <button name="submit" type="submit" id="contact-submit">
+                        add
+                    </button>
+                    <button type="submit" id="contact-submit" onClick="cancelAddProductLine()">
+                        cancel
+                    </button>
+
+                </fieldset>
+            </form>
         </div>
     </div>
+</div>
 </div>
 
 
