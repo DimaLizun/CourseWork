@@ -2,10 +2,12 @@ var express = require('express');
 var path = require('path');
 var app = express();
 var routes = require('./routes');
+
 var customers = require('./routes/customers');
 var employees = require('./routes/employees');
 var offices = require('./routes/offices');
 var home = require('./routes/home');
+var payments = require('./routes/payments');
 
 
 var favicon = require('serve-favicon');
@@ -90,6 +92,19 @@ app.get('/offices/add',offices.add);
 app.get('/offices/delete/:officeCode',offices.delete);
 app.get('/offices/edit/:officeCode',offices.edit);
 app.post('/offices/edit/:officeCode',offices.save_edit);
+
+
+/*
+ *
+ * payments
+ *
+ * */
+app.get('/payments',payments.list);
+app.post('/payments',payments.save);
+app.get('/payments/add',payments.add);
+app.get('/payments/delete/:customerNumber',payments.delete);
+app.get('/payments/edit/:customerNumber',payments.edit);
+app.post('/payments/edit/:customerNumber',payments.save_edit);
 
 
 // views engine setup

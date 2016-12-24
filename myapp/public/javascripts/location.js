@@ -20,3 +20,8 @@ function cancelAddOffices(){
 
     window.location.href = '/offices';
 }
+
+function cancelAddPayments() {
+
+    window.location.href = '/payments';
+}

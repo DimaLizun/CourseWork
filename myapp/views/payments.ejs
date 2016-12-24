@@ -169,83 +169,45 @@
             </div>
         </nav>
 
- <!-- Add Button -->
+        <!-- Add Button -->
         <div class="bred">
             <button class="show_popup btn btn-danger"  rel="popup1">
-                 +
+                +
             </button>
         </div>
 
         <div class="overlay_popup"></div>
-  <!-- Add Form -->
+        <!-- Add Form -->
         <div class="popup" id="popup1">
 
-            <form method="post" id="contact" action="/customers" >
-                <h3>Add data for customer</h3>
+
+            <form method="post" id="contact" action="/payments" >
+                <h3>Add data for offices</h3>
                 <fieldset>
                     <input placeholder="Id" type="text" tabindex="1" name="customerNumber"  required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Name Firm" type="text" name="customerName" tabindex="2" required>
+                    <input placeholder="foreg" type="text" tabindex="2" name="cusNumber"  required >
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Last Name" type="text" name="contactLastName" tabindex="3" required>
+                    <input placeholder="PaymentDate" type="text" name="paymentDate" tabindex="3" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="First Name" type="text" name="contactFirstName" tabindex="4" required>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="Phone" type="text" name="phone" tabindex="5" required>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="address1" type="text" name="addressLine1" tabindex="6" required></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="address2" type="text" name="addressLine2" tabindex="7" required></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="city" type="text" name="city" tabindex="8" required></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="state" type="text" name="state" tabindex="9" required></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="postalCode" type="text" name="postalCode" tabindex="10" required></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="country" type="text" name="country" tabindex="11" required></input>
-                </fieldset>
-                <fieldset>
-                   <select name="salesRepEmployeeNumber" required>
-
-                       <%
-                       for(var i = 0; i < emps.length; i++) { %>
-                       <option><%= emps[i].employeeNumber%></option>
-                       <% } %>
-
-                   </select>
-                </fieldset>
-                <!--
-                <fieldset>
-                    <input placeholder="Employees Num" type="text" name="salesRepEmployeeNumber" tabindex="12" required></input>
-                </fieldset>
-                -->
-                <fieldset>
-                    <input placeholder="creditLimit" type="text" name="creditLimit" tabindex="13" required></input>
+                    <input placeholder="Amount" type="text" name="amount" tabindex="4" required></input>
                 </fieldset>
 
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit">
                         add
                     </button>
-                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
+                    <button type="submit" id="contact-submit" onClick="cancelAddPayments()">
                         cancel
                     </button>
 
                 </fieldset>
             </form>
         </div>
-  <!-- View in loop data -->
+        <!-- View in loop data -->
 
         <div class="content">
             <div class="container-fluid">
@@ -257,65 +219,47 @@
                                 <p class="category"></p>
                             </div>
                             <div class ="scrol">
-                            <div class="content table-responsive table-full-width">
-                                <table class="table table-hover table-bordered">
-                                    <thead>
+                                <div class="content table-responsive table-full-width">
+                                    <table class="table table-hover table-bordered">
+                                        <thead>
                                         <th>Id</th>
-                                        <th>Name Firm</th>
-                                        <th>Last Name</th>
-                                        <th>First Name</th>
-                                        <th>phone</th>
-                                        <th>address1</th>
-                                        <th>address2</th>
-                                        <th>city</th>
-                                        <th>state</th>
-                                        <th>postalCode</th>
-                                        <th>country</th>
-                                        <th>sales Number</th>
-                                        <th>creditLimit</th>
+                                        <th>NumCustomer</th>
+                                        <th>Date</th>
+                                        <th>amount</th>
                                         <th>operation</th>
-                                    </thead>
+                                        </thead>
 
-                                    <tbody>
+                                        <tbody>
 
-                                    <% if(data.length){
-                                    for(var i = 0; i < data.length; i++) { %>
-                                    <tr>
-                                        <th><%= data[i].customerNumber%></th>
-                                        <th><%= data[i].customerName%></th>
-                                        <th><%= data[i].contactLastName%></th>
-                                        <th><%= data[i].contactFirstName%></th>
-                                        <th><%= data[i].phone%></th>
-                                        <th><%= data[i].addressLine1%></th>
-                                        <th><%= data[i].addressLine2%></th>
-                                        <th><%= data[i].city%></th>
-                                        <th><%= data[i].state%></th>
-                                        <th><%= data[i].postalCode%></th>
-                                        <th><%= data[i].country%></th>
-                                        <th><%= data[i].salesRepEmployeeNumber%></th>
-                                        <th><%= data[i].creditLimit%></th>
-                                        <th>
-                                            <button type="button">
-                                                <a href="../customers/delete/<%=data[i].customerNumber%>">
-                                                    delete
-                                                </a>
-                                            </button>
-                                            <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
-                                                <a href="../customers/edit/<%=data[i].customerNumber%>">edit</a>
-                                            </button>
-                                        </th>
-                                    </tr>
-                                    <% }
+                                        <% if(data.length){
+                                        for(var i = 0; i < data.length; i++) { %>
+                                        <tr>
+                                            <th><%= data[i].customerNumber%></th>
+                                            <th><%= data[i].cusNumber%></th>
+                                            <th><%= data[i].paymentDate%></th>
+                                            <th><%= data[i].amount%></th>
+                                            <th>
+                                                <button type="button">
+                                                    <a href="../payments/delete/<%=data[i].customerNumber%>">
+                                                        delete
+                                                    </a>
+                                                </button>
+                                                <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
+                                                    <a href="../payments/edit/<%=data[i].customerNumber%>">edit</a>
+                                                </button>
+                                            </th>
+                                        </tr>
+                                        <% }
 
-                                    }else{ %>
-                                    <tr>
-                                        <td colspan="3">No user</td>
-                                    </tr>
-                                    <% } %>
-                                    </tbody>
-                                </table>
+                                        }else{ %>
+                                        <tr>
+                                            <td colspan="3">No user</td>
+                                        </tr>
+                                        <% } %>
+                                        </tbody>
+                                    </table>
 
-                               </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -337,6 +281,7 @@
                                 Company
                             </a>
                         </li>
+
                     </ul>
                 </nav>
                 <p class="copyright pull-right">
