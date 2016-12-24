@@ -194,63 +194,52 @@
         </nav>
 
         <!-- Edit Form -->
+
         <div class="popup2" id="popup3">
-
-            <form method="post" action="/customers/edit/<%=data[0].customerNumber%>"  id="contact" >
-                <h3>Edit data for customer</h3>
-
+            orderNumber
+            orderDate
+            requiredDate
+            shippedDate
+            status
+            comments
+            customerNumber
+            <form method="post" id="contact" action="/orders/edit/<%=data[0]. orderNumber%>" >
+                <h3>Edit data for offices</h3>
                 <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" value="<%=data[0].customerNumber%>" name="customerNumber" autofocus>
-                </fieldset>
-
-                <fieldset>
-                    <input placeholder="Name Firm" type="text" value="<%=data[0].customerName%>" name="customerName">
-                </fieldset>
-                <fieldset>
-                    <input placeholder="Last Name" type="text" value="<%=data[0].contactLastName%>" name="contactLastName">
+                    <input placeholder="Id" type="text" tabindex="1" name="orderNumber" value="<%=data[0]. orderNumber%>"   required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="First Name" type="text" value="<%=data[0].contactFirstName%>" name="contactFirstName">
+                    <input placeholder="OrderDate" type="text" tabindex="2" name="orderDate" value="<%=data[0].orderDate%>"   required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Phone" type="text" value="<%=data[0].phone%>" name="phone">
+                    <input placeholder="RequiredDate" type="text" name="requiredDate" value="<%=data[0].requiredDate%>" tabindex="3" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="address1" type="text" value="<%=data[0].addressLine1%>"name="addressLine1"></input>
+                    <input placeholder="ShippedDate" type="text" name="shippedDate" value="<%=data[0].shippedDate%>" tabindex="4" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="address2" type="text" value="<%=data[0].addressLine2%>" name="addressLine2"></input>
+                    <input placeholder="Status" type="text" name="status" value="<%=data[0].status%>" tabindex="5" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="city" type="text" value="<%=data[0].city%>" name="city"></input>
+                    <input placeholder="Comments" type="text" name="comments" value="<%=data[0].comments%>" tabindex="6" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="state" type="text" value="<%=data[0].state%>" name="state"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="postalCode" type="text" value="<%=data[0].postalCode%>" name="postalCode"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="country" type="text" value="<%=data[0].country%>" name="country"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="sales Number" type="text" value="<%=data[0].salesRepEmployeeNumber%>" name="salesRepEmployeeNumber"></input>
-                </fieldset>
-                <fieldset>
-                    <input placeholder="creditLimit" type="text" value="<%=data[0].creditLimit%>" name="creditLimit"></input>
+                    <input placeholder="CustomerNumber" type="text" name="customerNumber" value="<%=data[0].customerNumber%>" tabindex="7" required></input>
                 </fieldset>
 
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit">
-                        Edit
+                        add
                     </button>
-                    <button type="submit" id="contact-submit" onClick="cancelAdd()">
-                        Cancel
+                    <button type="submit" id="contact-submit" onClick="cancelAddOrders()">
+                        cancel
                     </button>
+
                 </fieldset>
             </form>
         </div>
     </div>
+</div>
 </div>
 
 

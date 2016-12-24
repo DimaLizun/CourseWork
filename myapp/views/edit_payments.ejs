@@ -58,7 +58,7 @@
 
             <ul class="nav">
                 <li class="active">
-                    <a href="dashboard.html">
+                    <a href="/home">
                         <i class="pe-7s-graph"></i>
                         <p>Home</p>
                     </a>
@@ -81,7 +81,28 @@
                 <li class="active">
                     <a href="/offices">
                         <i class="pe-7s-graph"></i>
-                        <p>Products</p>
+                        <p>Offices</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/payments">
+                        <i class="pe-7s-graph"></i>
+                        <p>Payment</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/orders">
+                        <i class="pe-7s-graph"></i>
+                        <p>Orders</p>
+                    </a>
+                </li>
+
+                <li class="active">
+                    <a href="/payments">
+                        <i class="pe-7s-graph"></i>
+                        <p>Payment</p>
                     </a>
                 </li>
 
@@ -174,10 +195,7 @@
         <!-- Edit Form -->
 
         <div class="popup2" id="popup3">
-            customerNumber
-            checkNumber
-            paymentDate
-            amount
+
             <form method="post" id="contact" action="/payments/edit/<%=data[0].customerNumber%>" >
                 <h3>Edit data for offices</h3>
                 <fieldset>

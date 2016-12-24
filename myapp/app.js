@@ -8,6 +8,7 @@ var employees = require('./routes/employees');
 var offices = require('./routes/offices');
 var home = require('./routes/home');
 var payments = require('./routes/payments');
+var orders = require('./routes/orders')
 
 
 var favicon = require('serve-favicon');
@@ -105,6 +106,21 @@ app.get('/payments/add',payments.add);
 app.get('/payments/delete/:customerNumber',payments.delete);
 app.get('/payments/edit/:customerNumber',payments.edit);
 app.post('/payments/edit/:customerNumber',payments.save_edit);
+
+
+/*
+ *
+ *orders
+ *
+ * */
+
+
+app.get('/orders',orders.list);
+app.post('/orders',orders.save);
+app.get('/orders/add',orders.add);
+app.get('/orders/delete/:orderNumber',orders.delete);
+app.get('/orders/edit/:orderNumber',orders.edit);
+app.post('/orders/edit/:orderNumber',orders.save_edit);
 
 
 // views engine setup
