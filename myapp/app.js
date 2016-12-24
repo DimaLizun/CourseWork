@@ -9,7 +9,7 @@ var offices = require('./routes/offices');
 var home = require('./routes/home');
 var payments = require('./routes/payments');
 var orders = require('./routes/orders')
-
+var orderdetails = require('./routes/orderdetails');
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -121,6 +121,18 @@ app.get('/orders/add',orders.add);
 app.get('/orders/delete/:orderNumber',orders.delete);
 app.get('/orders/edit/:orderNumber',orders.edit);
 app.post('/orders/edit/:orderNumber',orders.save_edit);
+
+/*
+ *
+ *orderdetails
+ *
+ * */
+app.get('/orderdetails',orderdetails.list);
+app.post('/orderdetails',orderdetails.save);
+app.get('/orderdetails/add',orderdetails.add);
+app.get('/orderdetails/delete/:Id',orderdetails.delete);
+app.get('/orderdetails/edit/:Id',orderdetails.edit);
+app.post('/orderdetails/edit/:Id',orderdetails.save_edit);
 
 
 // views engine setup

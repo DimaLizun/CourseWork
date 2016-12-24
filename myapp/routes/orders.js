@@ -84,7 +84,7 @@ exports.save_edit = function (req, res) {
 }
 
 exports.delete = function (req,res) {
-    var id = req.params.customerNumber;
+    var id = req.params.orderNumber;
     req.getConnection(function (err,connection) {
         connection.query('DELETE FROM orders WHERE orderNumber = ? ',[id],function (err,rows) {
             if(err)

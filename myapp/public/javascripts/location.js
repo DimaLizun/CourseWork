@@ -29,3 +29,7 @@ function cancelAddPayments() {
 function cancelAddOrders() {
     window.location.href = '/orders';
 }
+
+function cancelAddOrderDetails() {
+    window.location.href = '/orderdetails';
+}

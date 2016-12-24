@@ -100,19 +100,26 @@
                 </li>
 
                 <li class="active">
-                    <a href="/payments">
+                    <a href="/orderdetails">
                         <i class="pe-7s-graph"></i>
-                        <p>Payment</p>
+                        <p>Order details</p>
                     </a>
                 </li>
 
                 <li class="active">
-                    <a href="/payments">
+                    <a href="/products">
                         <i class="pe-7s-graph"></i>
-                        <p>Payment</p>
+                        <p>Products</p>
                     </a>
                 </li>
 
+
+                <li class="active">
+                    <a href="/productslines">
+                        <i class="pe-7s-graph"></i>
+                        <p>Product line</p>
+                    </a>
+                </li>
 
             </ul>
 
@@ -196,17 +203,11 @@
         <!-- Edit Form -->
 
         <div class="popup2" id="popup3">
-            orderNumber
-            orderDate
-            requiredDate
-            shippedDate
-            status
-            comments
-            customerNumber
+
             <form method="post" id="contact" action="/orders/edit/<%=data[0]. orderNumber%>" >
                 <h3>Edit data for offices</h3>
                 <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" name="orderNumber" value="<%=data[0]. orderNumber%>"   required autofocus>
+                    <input placeholder="Id" type="text" tabindex="1" name="orderNumber" value="<%=data[0].orderNumber%>"   required autofocus>
                 </fieldset>
                 <fieldset>
                     <input placeholder="OrderDate" type="text" tabindex="2" name="orderDate" value="<%=data[0].orderDate%>"   required autofocus>
