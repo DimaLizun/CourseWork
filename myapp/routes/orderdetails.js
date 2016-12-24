@@ -1,12 +1,3 @@
-/**
- * Created by Lizun on 24.12.2016.
- */
-/**
- * Created by Lizun on 24.12.2016.
- */
-
-
-
 
 /**
  * Created by Lizun on 07.12.2016.
@@ -20,7 +11,7 @@ exports.list = function (req,res) {
             res.render('orderdetails',{page_title:"orders", data:rows});
         });
     });
-}
+};
 
 exports.add = function(req, res){
     res.render('orders',{page_title:"Add offices"});
@@ -36,7 +27,7 @@ exports.edit  = function (req,res) {
             res.render('edit_orderdetails',{page_title: "edit", data: row})
         })
     })
-}
+};
 
 
 exports.save = function (req,res) {
@@ -59,7 +50,7 @@ exports.save = function (req,res) {
             res.redirect('/orderdetails')
         })
     })
-}
+};
 
 exports.save_edit = function (req, res) {
 
@@ -82,7 +73,7 @@ exports.save_edit = function (req, res) {
             res.redirect('/orderdetails');
         })
     })
-}
+};
 
 exports.delete = function (req,res) {
     var id = req.params.Id;
@@ -93,6 +84,6 @@ exports.delete = function (req,res) {
             res.redirect('/orderdetails');
         })
     })
-}
+};
 
 

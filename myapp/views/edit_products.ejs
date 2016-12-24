@@ -121,10 +121,13 @@
                     </a>
                 </li>
 
+
             </ul>
 
         </div>
     </div>
+
+
 
 
     <div class="main-panel">
@@ -198,143 +201,52 @@
             </div>
         </nav>
 
-        <!-- Add Button -->
-        <div class="bred">
-            <button class="show_popup btn btn-danger"  rel="popup1">
-                +
-            </button>
-        </div>
+        <!-- Edit Form -->
 
-        <div class="overlay_popup"></div>
-        <!-- Add Form -->
-        <div class="popup" id="popup1">
-
-
-            <form method="post" id="contact" action="/orders" >
-                <h3>Add data for offices</h3>
+        <div class="popup2" id="popup3">
+            <form method="post" id="contact" action="/products/edit/<%=data[0].productCode%>" >
+                <h3>Edit data for offices</h3>
                 <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" name="orderNumber"  required autofocus>
+                    <input type="text" tabindex="1" name="productCode" value="<%=data[0].productCode%>"   required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="OrderDate" type="text" tabindex="2" name="orderDate"  required >
+                    <input type="text" tabindex="1" name="productName" value="<%=data[0].productName%>"   required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="RequiredDate" type="text" name="requiredDate" tabindex="3" required></input>
+                    <input type="text" tabindex="2" name="productLine" value="<%=data[0].productLine%>"   required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="ShippedDate" type="text" name="shippedDate" tabindex="4" required></input>
+                    <input  type="text" name="productScale" value="<%=data[0].productScale%>" tabindex="3" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Status" type="text" name="status" tabindex="5" required></input>
+                    <input type="text" name= "productVendor"  value="<%=data[0].productVendor%>" tabindex="4" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Comments" type="text" name="comments" tabindex="6" required></input>
+                    <input type="text" name="productDescription" value="<%=data[0].productDescription%>" tabindex="5" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="CustomerNumber" type="text" name="customerNumber" tabindex="7" required></input>
+                    <input type="text" name="quantityInStock" value="<%=data[0].quantityInStock%>" tabindex="6" required></input>
+                </fieldset>
+                <fieldset>
+                    <input type="text" name="buyPrice" value="<%=data[0].buyPrice%>" tabindex="7" required></input>
+                </fieldset>
+                <fieldset>
+                    <input type="text" name="MSRP" value="<%=data[0].MSRP%>" tabindex="8" required></input>
                 </fieldset>
 
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit">
                         add
                     </button>
-                    <button type="submit" id="contact-submit" onClick="cancelAddProducts()">
+                    <button type="submit" id="contact-submit" onClick="cancelAddOrderDetails()">
                         cancel
                     </button>
 
                 </fieldset>
             </form>
         </div>
-        <!-- View in loop data -->
-
-        <div class="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card">
-                            <div class="header">
-                                <h4 class="title"></h4>
-                                <p class="category"></p>
-                            </div>
-                            <div class ="scrol">
-                                <div class="content table-responsive table-full-width">
-                                    <table class="table table-hover table-bordered">
-                                        <thead>
-                                        <th>orderNumber </th>
-                                        <th>orderDate </th>
-                                        <th>requiredDate </th>
-                                        <th>shippedDate </th>
-                                        <th>status</th>
-                                        <th>comments</th>
-                                        <th>customerNumber</th>
-                                        <th>operation</th>
-                                        </thead>
-
-                                        <tbody>
-
-                                        <% if(data.length){
-                                        for(var i = 0; i < data.length; i++) { %>
-                                        <tr>
-                                            <th><%= data[i].orderNumber%></th>
-                                            <th><%= data[i].orderDate%></th>
-                                            <th><%= data[i].requiredDate%></th>
-                                            <th><%= data[i].shippedDate%></th>
-                                            <th><%= data[i].status%></th>
-                                            <th><%= data[i].comments%></th>
-                                            <th><%= data[i].customerNumber%></th>
-
-                                            <th>
-                                                <button type="button">
-                                                    <a href="../orders/delete/<%=data[i].orderNumber%>">
-                                                        delete
-                                                    </a>
-                                                </button>
-                                                <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
-                                                    <a href="../orders/edit/<%=data[i].orderNumber%>">edit</a>
-                                                </button>
-                                            </th>
-                                        </tr>
-                                        <% }
-
-                                        }else{ %>
-                                        <tr>
-                                            <td colspan="3">No user</td>
-                                        </tr>
-                                        <% } %>
-                                        </tbody>
-                                    </table>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <footer class="footer">
-            <div class="container-fluid">
-                <nav class="pull-left">
-                    <ul>
-                        <li>
-                            <a href="#">
-                                Home
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                Company
-                            </a>
-                        </li>
-
-                    </ul>
-                </nav>
-                <p class="copyright pull-right">
-                    &copy; 2016
-                </p>
-            </div>
-        </footer>
     </div>
+</div>
 </div>
 
 

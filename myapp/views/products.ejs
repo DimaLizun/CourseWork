@@ -210,28 +210,35 @@
         <div class="popup" id="popup1">
 
 
-            <form method="post" id="contact" action="/orders" >
+
+            <form method="post" id="contact" action="/products" >
                 <h3>Add data for offices</h3>
                 <fieldset>
-                    <input placeholder="Id" type="text" tabindex="1" name="orderNumber"  required autofocus>
+                    <input placeholder="Id" type="text" tabindex="1" name="productCode"  required autofocus>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="OrderDate" type="text" tabindex="2" name="orderDate"  required >
+                    <input placeholder="ProductName" type="text" tabindex="1" name="productName"  required >
                 </fieldset>
                 <fieldset>
-                    <input placeholder="RequiredDate" type="text" name="requiredDate" tabindex="3" required></input>
+                    <input placeholder="ProductLine" type="text" tabindex="2" name="productLine"  required >
                 </fieldset>
                 <fieldset>
-                    <input placeholder="ShippedDate" type="text" name="shippedDate" tabindex="4" required></input>
+                    <input placeholder="ProductScale" type="text" name="productScale" tabindex="3" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Status" type="text" name="status" tabindex="5" required></input>
+                    <input placeholder="ProductVendor" type="text" name="productVendor" tabindex="4" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="Comments" type="text" name="comments" tabindex="6" required></input>
+                    <input placeholder="ProductDescription" type="text" name="productDescription" tabindex="5" required></input>
                 </fieldset>
                 <fieldset>
-                    <input placeholder="CustomerNumber" type="text" name="customerNumber" tabindex="7" required></input>
+                    <input placeholder="QuantityInStock" type="text" name="quantityInStock" tabindex="6" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="BuyPrice" type="text" name="buyPrice" tabindex="7" required></input>
+                </fieldset>
+                <fieldset>
+                    <input placeholder="MSRP" type="text" name="MSRP" tabindex="8" required></input>
                 </fieldset>
 
                 <fieldset>
@@ -260,14 +267,16 @@
                                 <div class="content table-responsive table-full-width">
                                     <table class="table table-hover table-bordered">
                                         <thead>
-                                        <th>orderNumber </th>
-                                        <th>orderDate </th>
-                                        <th>requiredDate </th>
-                                        <th>shippedDate </th>
-                                        <th>status</th>
-                                        <th>comments</th>
-                                        <th>customerNumber</th>
-                                        <th>operation</th>
+                                        <th>productCode</th>
+                                        <th>productName</th>
+                                        <th>productLine</th>
+                                        <th>productScale</th>
+                                        <th>productVendor</th>
+                                        <th>productDescription</th>
+                                        <th>quantityInStock</th>
+                                        <th>buyPrice</th>
+                                        <th>MSRP</th>
+                                        <th>operating</th>
                                         </thead>
 
                                         <tbody>
@@ -275,22 +284,23 @@
                                         <% if(data.length){
                                         for(var i = 0; i < data.length; i++) { %>
                                         <tr>
-                                            <th><%= data[i].orderNumber%></th>
-                                            <th><%= data[i].orderDate%></th>
-                                            <th><%= data[i].requiredDate%></th>
-                                            <th><%= data[i].shippedDate%></th>
-                                            <th><%= data[i].status%></th>
-                                            <th><%= data[i].comments%></th>
-                                            <th><%= data[i].customerNumber%></th>
-
+                                            <th><%= data[i].productCode%></th>
+                                            <th><%= data[i].productName%></th>
+                                            <th><%= data[i].productLine%></th>
+                                            <th><%= data[i].productScale%></th>
+                                            <th><%= data[i].productVendor%></th>
+                                            <th><%= data[i].productDescription%></th>
+                                            <th><%= data[i].quantityInStock%></th>
+                                            <th><%= data[i].buyPrice%></th>
+                                            <th><%= data[i].MSRP%></th>
                                             <th>
                                                 <button type="button">
-                                                    <a href="../orders/delete/<%=data[i].orderNumber%>">
+                                                    <a href="../products/delete/<%=data[i].productCode%>">
                                                         delete
                                                     </a>
                                                 </button>
                                                 <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
-                                                    <a href="../orders/edit/<%=data[i].orderNumber%>">edit</a>
+                                                    <a href="../products/edit/<%=data[i].productCode%>">edit</a>
                                                 </button>
                                             </th>
                                         </tr>

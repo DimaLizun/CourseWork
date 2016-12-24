@@ -1,9 +1,3 @@
-/**
- * Created by Lizun on 24.12.2016.
- */
-
-
-
 
 /**
  * Created by Lizun on 07.12.2016.
