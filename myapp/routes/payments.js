@@ -1,7 +1,7 @@
 /**
  * Created by Lizun on 07.12.2016.
  */
-
+/*
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
         var query = connection.query('SELECT * FROM payments', function (err, rows) {
@@ -11,6 +11,24 @@ exports.list = function (req,res) {
         });
     });
 }
+*/
+
+exports.list = function (req,res) {
+    req.getConnection(function (err,connection) {
+        var query2 = connection.query('SELECT customerNumber FROM customers', function (err,cus) {
+            if (err)
+                console.log("ERROR" + err);
+            var query = connection.query('SELECT * FROM payments', function (err,pay) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"employees", data:pay,cust:cus};
+
+                res.render('payments',data);
+            });
+        });
+    });
+};
+
 
 exports.add = function(req, res){
     res.render('payments',{page_title:"Add offices"});

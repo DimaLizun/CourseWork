@@ -3,15 +3,24 @@
  * Created by Lizun on 07.12.2016.
  */
 
+
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM orders', function (err, rows) {
+        var query2 = connection.query('SELECT customerNumber FROM customers', function (err,cus) {
             if (err)
                 console.log("ERROR" + err);
-            res.render('orders',{page_title:"orders", data:rows});
+            var query = connection.query('SELECT * FROM orders', function (err,pay) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"employees", data:pay,cust:cus};
+
+                res.render('orders',data);
+            });
         });
     });
-}
+};
+
+
 
 exports.add = function(req, res){
     res.render('orders',{page_title:"Add offices"});
@@ -27,7 +36,7 @@ exports.edit  = function (req,res) {
             res.render('edit_orders',{page_title: "edit", data: row})
         })
     })
-}
+};
 
 
 exports.save = function (req,res) {
@@ -51,7 +60,7 @@ exports.save = function (req,res) {
             res.redirect('/orders')
         })
     })
-}
+};
 
 exports.save_edit = function (req, res) {
 
@@ -86,6 +95,6 @@ exports.delete = function (req,res) {
             res.redirect('/orders');
         })
     })
-}
+};
 
 

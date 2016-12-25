@@ -41,3 +41,21 @@ function cancelAddProducts() {
 function cancelAddProductLine() {
     window.location.href = '/productlines';
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -216,9 +216,20 @@
                 <fieldset>
                     <input placeholder="Id" type="text" tabindex="1" name="Id"  required autofocus>
                 </fieldset>
+
+
                 <fieldset>
-                    <input placeholder="OrderNumber" type="text" tabindex="1" name="orderNumber"  required >
+                    <select name="orderNumber" required>
+
+                        <%
+                        for(var i = 0; i < ord.length; i++) { %>
+                        <option><%= ord[i].orderNumber%></option>
+                        <% } %>
+
+                    </select>
                 </fieldset>
+
+
                 <fieldset>
                     <input placeholder="ProductCode" type="text" tabindex="2" name="productCode"  required >
                 </fieldset>
@@ -231,6 +242,9 @@
                 <fieldset>
                     <input placeholder="OrderLineNumber" type="text" name="orderLineNumber" tabindex="5" required></input>
                 </fieldset>
+
+
+
                 <fieldset>
                     <button name="submit" type="submit" id="contact-submit">
                         add
@@ -338,24 +352,5 @@
 <!--   Core JS Files   -->
 <script src="/../template/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="/../template/js/bootstrap.min.js" type="text/javascript"></script>
-
-<!--  Checkbox, Radio & Switch Plugins -->
-<script src="/../template/js/bootstrap-checkbox-radio-switch.js"></script>
-
-<!--  Charts Plugin
-<script src="/../template/js/chartist.min.js"></script>
--->
-<!--  Notifications Plugin    -->
-<script src="/../template/js/bootstrap-notify.js"></script>
-
-<!--  Google Maps Plugin    -->
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
-<script src="/../template/js/light-bootstrap-dashboard.js"></script>
-
-<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
-<script src="/../template/js/demo.js"></script>
-
 
 </html>

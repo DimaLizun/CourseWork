@@ -1,15 +1,28 @@
+const url = require('url');
 
 exports.list = function (req,res) {
+
+    //const str = ":sorts";
+    var param = req.params.sorts;
+    var field=req.query.sorts;
+
+
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
             if (err)
                 console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM customers', function (err, cust) {
+            var query ='SELECT * FROM customers '
+                +(field?('order by '+field):'');
+
+            console.log(query );
+            connection.query(query, function (err, cust) {
                 if (err)
                     console.log("ERROR" + err);
                 var data={page_title:"Customers - Node.js", data:cust,emps:emps};
 
+                var a = [];
                 res.render('customers',data);
+
             });
         });
     });
@@ -32,7 +45,7 @@ exports.edit  = function (req,res) {
             res.render('edit_customers',{page_title: "edit", data: rows})
         })
     })
-}
+};
 
 exports.save = function (req,res) {
     //var input = JSON.parse(JSON.stringify(req.body));

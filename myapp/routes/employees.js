@@ -1,6 +1,6 @@
 /**
  * Created by Lizun on 07.12.2016.
- */
+
 
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
@@ -11,6 +11,24 @@ exports.list = function (req,res) {
         });
     });
 };
+ */
+
+exports.list = function (req,res) {
+    req.getConnection(function (err,connection) {
+        var query2 = connection.query('SELECT officeCode FROM offices', function (err, off) {
+            if (err)
+                console.log("ERROR" + err);
+            var query = connection.query('SELECT * FROM employees', function (err, empl) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"employees", data:empl,offs:off};
+
+                res.render('employees',data);
+            });
+        });
+    });
+};
+
 
 
 
@@ -41,7 +59,6 @@ exports.save = function (req,res) {
         extension: input.extension,
         email: input.email,
         officeCode: input.officeCode,
-        reportsTo: input.reportsTo,
         jobTitle: input.jobTitle
     };
 
@@ -65,7 +82,6 @@ exports.save_edit = function (req, res) {
         extension: input.extension,
         email: input.email,
         officeCode: input.officeCode,
-        reportsTo: input.reportsTo,
         jobTitle: input.jobTitle
     };
 

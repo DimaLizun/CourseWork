@@ -3,15 +3,32 @@
  * Created by Lizun on 07.12.2016.
  */
 
+
+
 exports.list = function (req,res) {
     req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM products', function (err, rows) {
+        var query2 = connection.query('SELECT productCode FROM orderdetails', function (err,cus) {
             if (err)
                 console.log("ERROR" + err);
-            res.render('products',{page_title:"orders", data:rows});
+            var query = connection.query('SELECT * FROM products', function (err,pay) {
+                if (err)
+                    console.log("ERROR" + err);
+
+                var query3 = connection.query('SELECT productLine FROM productlines', function (err,lin) {
+                    if (err)
+                        console.log("ERROR" + err);
+
+
+                    var data = {page_title: "employees", data: pay, orderdet: cus, line:lin};
+
+                    res.render('products', data);
+                });
+            });
         });
     });
 };
+
+
 
 exports.add = function(req, res){
     res.render('products',{page_title:"Add offices"});

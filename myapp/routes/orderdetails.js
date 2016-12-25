@@ -13,6 +13,24 @@ exports.list = function (req,res) {
     });
 };
 
+exports.list = function (req,res) {
+    req.getConnection(function (err,connection) {
+        var query2 = connection.query('SELECT orderNumber FROM orders', function (err,order) {
+            if (err)
+                console.log("ERROR" + err);
+            var query = connection.query('SELECT * FROM orderdetails', function (err,pay) {
+                if (err)
+                    console.log("ERROR" + err);
+                var data={page_title:"employees", data:pay,ord:order};
+
+                res.render('orderdetails',data);
+            });
+        });
+    });
+};
+
+
+
 exports.add = function(req, res){
     res.render('orders',{page_title:"Add offices"});
 };
