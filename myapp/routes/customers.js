@@ -14,7 +14,7 @@ exports.list = function (req,res) {
             var query ='SELECT * FROM customers '
                 +(field?('order by '+field):'');
 
-            console.log(query );
+            //console.log(query);
             connection.query(query, function (err, cust) {
                 if (err)
                     console.log("ERROR" + err);

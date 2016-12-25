@@ -154,6 +154,9 @@ fieldset {
 
 .bred{
    margin: 20px 30px;
+   width: 330px;
+   display: flex;
+   justify-content: space-between;
 }
 
 
@@ -185,6 +188,15 @@ fieldset {
     z-index: 1000;
     margin:0 25% 0 25%;
     width:50%;
+}
+
+#selSort{
+    width: 159px;
+    height: 35px;
+    border: 2px solid #d43f3a;
+    border-radius: 0px;
+    margin-top: 2px;
+    color: #d43f3a;
 }
 
 
