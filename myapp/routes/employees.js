@@ -1,28 +1,21 @@
-/**
- * Created by Lizun on 07.12.2016.
-
-
 exports.list = function (req,res) {
-    req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM employees', function (err, rows) {
-            if (err)
-                console.log("ERROR" + err);
-            res.render('employees',{page_title:"employees - Node.js", data:rows});
-        });
-    });
-};
- */
 
-exports.list = function (req,res) {
+    var param = req.params.sorts;
+    var field=req.query.sorts;
+
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT officeCode FROM offices', function (err, off) {
             if (err)
                 console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM employees', function (err, empl) {
+
+            var query ='SELECT * FROM employees '
+                +(field?('order by '+field):'');
+            console.log(query);
+            connection.query(query, function (err, empl) {
                 if (err)
                     console.log("ERROR" + err);
-                var data={page_title:"employees", data:empl,offs:off};
 
+                var data={page_title:"employees", data:empl,offs:off};
                 res.render('employees',data);
             });
         });

@@ -5,11 +5,17 @@
 
 
 exports.list = function (req,res) {
+
+    var field=req.query.sorts;
+
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT customerNumber FROM customers', function (err,cus) {
             if (err)
                 console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM orders', function (err,pay) {
+
+            var query ='SELECT * FROM orders '
+                +(field?('order by '+field):'');
+            connection.query(query, function (err,pay) {
                 if (err)
                     console.log("ERROR" + err);
                 var data={page_title:"employees", data:pay,cust:cus};

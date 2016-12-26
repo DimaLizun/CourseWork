@@ -3,14 +3,22 @@
  */
 
 exports.list = function (req,res) {
+
+    var param = req.params.sorts;
+    var field=req.query.sorts;
+
     req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM offices', function (err, rows) {
+
+        var query ='SELECT * FROM offices '
+            +(field?('order by '+field):'');
+
+        connection.query(query, function (err, rows) {
             if (err)
                 console.log("ERROR" + err);
             res.render('offices',{page_title:"offices", data:rows});
         });
     });
-}
+};
 
 exports.add = function(req, res){
     res.render('offices',{page_title:"Add offices"});

@@ -6,11 +6,15 @@
 
 
 exports.list = function (req,res) {
+    var field=req.query.sorts;
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT productCode FROM orderdetails', function (err,cus) {
             if (err)
                 console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM products', function (err,pay) {
+
+            var query ='SELECT * FROM products '
+                +(field?('order by '+field):'');
+             connection.query(query, function (err,pay) {
                 if (err)
                     console.log("ERROR" + err);
 

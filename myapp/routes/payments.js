@@ -1,24 +1,21 @@
 /**
  * Created by Lizun on 07.12.2016.
  */
-/*
-exports.list = function (req,res) {
-    req.getConnection(function (err,connection) {
-        var query = connection.query('SELECT * FROM payments', function (err, rows) {
-            if (err)
-                console.log("ERROR" + err);
-            res.render('payments',{page_title:"payments", data:rows});
-        });
-    });
-}
-*/
+
+
 
 exports.list = function (req,res) {
+
+    var field=req.query.sorts;
+
     req.getConnection(function (err,connection) {
         var query2 = connection.query('SELECT customerNumber FROM customers', function (err,cus) {
             if (err)
                 console.log("ERROR" + err);
-            var query = connection.query('SELECT * FROM payments', function (err,pay) {
+
+            var query ='SELECT * FROM payments '
+                +(field?('order by '+field):'');
+            connection.query(query, function (err,pay) {
                 if (err)
                     console.log("ERROR" + err);
                 var data={page_title:"employees", data:pay,cust:cus};

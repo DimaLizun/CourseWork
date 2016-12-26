@@ -1,8 +1,7 @@
-const url = require('url');
+
 
 exports.list = function (req,res) {
 
-    //const str = ":sorts";
     var param = req.params.sorts;
     var field=req.query.sorts;
 
@@ -11,6 +10,7 @@ exports.list = function (req,res) {
         var query2 = connection.query('SELECT employeeNumber FROM employees', function (err, emps) {
             if (err)
                 console.log("ERROR" + err);
+
             var query ='SELECT * FROM customers '
                 +(field?('order by '+field):'');
 
@@ -18,9 +18,8 @@ exports.list = function (req,res) {
             connection.query(query, function (err, cust) {
                 if (err)
                     console.log("ERROR" + err);
-                var data={page_title:"Customers - Node.js", data:cust,emps:emps};
 
-                var a = [];
+                var data={page_title:"Customers - Node.js", data:cust,emps:emps};
                 res.render('customers',data);
 
             });

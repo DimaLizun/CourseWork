@@ -205,13 +205,14 @@
 
             <button class="btn btn-danger" onclick="GetParams()">Star sort</button>
 
-            <select id="selSort" >
+            <select id="selSort" name="customers">
                 <option value="customerNumber">customerNumber</option>
                 <option value="city">city</option>
                 <option value="creditLimit">creditLimit</option>
                 <option value="customerName">customerName</option>
                 <option value="contactLastName">contactLastName</option>
             </select>
+
         </div>
 
         <div class="overlay_popup"></div>
@@ -338,7 +339,7 @@
                                                     delete
                                                 </a>
                                             </button>
-                                            <button type="button" name="<%=i%>" class="show_popup2 edit-button"   >
+                                            <button type="button" name="<%=i%>" class="edit-button"   >
                                                 <a href="../customers/edit/<%=data[i].customerNumber%>">edit</a>
                                             </button>
                                         </th>

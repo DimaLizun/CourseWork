@@ -16,7 +16,7 @@
     <script src="/../template/js/jquery-1.10.2.js" type="text/javascript"></script>
 
     <script  type="text/javascript" src="/../javascripts/showPopup.js"></script>
-
+    <script  type="text/javascript" src="/../javascripts/option.js"></script>
 
 
     <!-- Bootstrap core CSS     -->
@@ -203,6 +203,16 @@
             <button class="show_popup btn btn-danger"  rel="popup1">
                 +
             </button>
+
+            <button class="btn btn-danger" onclick="GetParams()">Star sort</button>
+
+            <select id="selSort" name="products" >
+                <option value="productCode">productCode</option>
+                <option value="productName">ProductName</option>
+                <option value="productLine">ProductLine</option>
+                <option value="buyPrice">buyPrice</option>
+                <option value="MSRP">MSRP</option>
+            </select>
         </div>
 
         <div class="overlay_popup"></div>

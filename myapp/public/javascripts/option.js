@@ -10,10 +10,11 @@ function getSelect() {
 }
 
 function GetParams() {
-   // var e = document.getElementById("selSort");
+
     var strUser = document.getElementById("selSort").value;
-    //var strUser = e.options[e.selectedIndex].value;
-    window.location.href='/customers?sorts='+strUser;
+    var name = document.getElementById("selSort").getAttribute("name");
+
+    window.location.href= '/' + name + '?sorts=' + strUser;
 }
 
 
